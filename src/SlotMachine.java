@@ -31,11 +31,11 @@ public class SlotMachine {
             do {
                 System.out.print("Masukkan bet : ");
                 bet = input.nextInt();
-                if (bet >= userTotal) {
+                if (bet > userTotal) {
                     System.out.println("Fpoint kurang");
                 }
 
-            } while (bet >= userTotal);
+            } while (bet > userTotal);
 
             userTotal = userTotal - bet;
 
@@ -64,19 +64,17 @@ public class SlotMachine {
                     int tripleReward = (bet * 3);
                     userTotal = (userTotal + tripleReward);
                     System.out.printf("%nAnda menang: %s", tripleReward);
-                    System.out.printf("%nFpoint: %s", userTotal);
-                } else if (random1[ranf1][ranl1] != random2[ranf2][ranl2] && random2[ranf2][ranl2] !=
-                        random3[ranf3][ranl3] && random1[ranf1][ranl1] != random3[ranf3][ranl3]) {
+                    System.out.printf("%nFruits Point : %s", userTotal);
+                } else if (random1[ranf1][ranl1] != random2[ranf2][ranl2] && random2[ranf2][ranl2] != random3[ranf3][ranl3] && random1[ranf1][ranl1] != random3[ranf3][ranl3]) {
                     System.out.printf("%nZERO");
                     System.out.printf("%nAnda menang: 0");
-                    System.out.printf("%nFpoint: %s", userTotal);
-                } else if (random1[ranf1][ranl1] == random2[ranf2][ranl2] || random2[ranf2][ranl2] ==
-                        random3[ranf3][ranl3] || random1[ranf1][ranl1] == random3[ranf3][ranl3]) {
+                    System.out.printf("%nFruits Point : %s", userTotal);
+                } else if (random1[ranf1][ranl1] == random2[ranf2][ranl2] || random2[ranf2][ranl2] == random3[ranf3][ranl3] || random1[ranf1][ranl1] == random3[ranf3][ranl3]) {
                     System.out.printf("%nDouble Fruits");
                     int doubleReward = (bet * 2);
                     userTotal = (userTotal + doubleReward);
                     System.out.printf("%nAnda menang : %s", doubleReward);
-                    System.out.printf("%nFpoint : %s", userTotal);
+                    System.out.printf("%nFruits Point : %s", userTotal);
                 }
 
             } else {
@@ -89,7 +87,10 @@ public class SlotMachine {
             ulang = input.next();
 
             System.out.println();
-
+            if (userTotal==0){
+                System.out.println("Fruits Point mu habis");
+                System.exit(0);
+            }
         } while (ulang.equalsIgnoreCase("y"));
     }
 }
